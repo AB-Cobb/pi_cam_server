@@ -5,6 +5,8 @@ const PORT = process.env.PORT || 3000;
 const app = express()
 server = app.listen(PORT)
 const wss = new Server({ server });
+const http = require('http')
+
 
 wss.connectionCount = 0;
 wss.on('connection', function(socket, upgradeReq) {
@@ -29,8 +31,7 @@ wss.broadcast = function(data) {
 		}
 	});
 };
-
-app.get("/streamin", (req, res) => {
+const streamSever = http.createServer(app, (req,res)=>{
     res.connection.setTimeout(0);
     req.on('data', data => {
         console.log("pi cam data")
@@ -46,6 +47,23 @@ app.get("/streamin", (req, res) => {
         }
     });
 })
+/*
+app.get("/streamin", (req, res) => {
+    res.connection.setTimeout(0);
+    req.on('data', data => {
+        console.log("pi cam data")
+		wss.broadcast(data);
+		if (req.socket.recording) {
+			req.socket.recording.write(data);
+		}
+    });
+    req.on('end',function(){
+		console.log('close');
+		if (req.socket.recording) {
+			req.socket.recording.close();
+        }
+    });
+})*/
 
 app.get ('/', (req, res) => {
     res.sendFile("index.html", { root: __dirname })
