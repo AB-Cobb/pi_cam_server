@@ -16,7 +16,7 @@
     <script type="text/javascript">
 		var canvas = document.getElementById('video-canvas');
 		var url = location.origin.replace(/^http/, 'ws')
-		var player = new JSMpeg.Player(url, {canvas: canvas});
+		var player = new JSMpeg.Player(url, {canvas: canvas, disableWebAssembly : true});
 	</script>
 </body>
 </html>
