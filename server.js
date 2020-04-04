@@ -1,10 +1,9 @@
-const fs = require('fs'),
-	http = require('http'),
-	WebSocket = require('ws')
+
+const WebSocket = require('ws')
 const PORT = process.env.PORT || 3000;
-const wss = new WebSocket.Server({
-    port: PORT, perMessageDeflate: false
-});
+const app = express()
+server = app.listen(process.env.PORT || 3000)
+const wss = new Server({ server });
 
 wss.connectionCount = 0;
 wss.on('connection', function(socket, upgradeReq) {
@@ -21,8 +20,7 @@ wss.broadcast = function(data) {
 	});
 };
 
-// HTTP Server to accept incomming MPEG-TS Stream from ffmpeg
-var picamStreamServer = http.createServer((req, res) => {
+app.POST("/streamin", (req, res) => {
     res.connection.setTimeout(0);
     res.on('data', data => {
 		wss.broadcast(data);
@@ -30,4 +28,8 @@ var picamStreamServer = http.createServer((req, res) => {
 			req.socket.recording.write(data);
 		}
 	});
-}).listen(8081)
+})
+
+app.get ('/', (req, res) => {
+    res.render('index')
+})
