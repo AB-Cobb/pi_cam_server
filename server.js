@@ -13,12 +13,12 @@ wss.on('connection', function(socket, upgradeReq) {
 		'New WebSocket Connection: ', 
 		(upgradeReq || socket.upgradeReq).socket.remoteAddress,
 		(upgradeReq || socket.upgradeReq).headers['user-agent'],
-		'('+socketServer.connectionCount+' total)'
+		'('+wss.connectionCount+' total)'
 	);
 	socket.on('close', function(code, message){
         wss.connectionCount--;
         console.log(
-			'Disconnected WebSocket ('+socketServer.connectionCount+' total)'
+			'Disconnected WebSocket ('+wss.connectionCount+' total)'
 		);
 	});
 });
