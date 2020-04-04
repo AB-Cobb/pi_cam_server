@@ -1,8 +1,9 @@
 
 const WebSocket = require('ws')
+const express = require ('express')
 const PORT = process.env.PORT || 3000;
 const app = express()
-server = app.listen(process.env.PORT || 3000)
+server = app.listen(PORT)
 const wss = new Server({ server });
 
 wss.connectionCount = 0;
