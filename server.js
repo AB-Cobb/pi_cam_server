@@ -6,6 +6,9 @@ const app = express()
 server = app.listen(PORT)
 const wss = new Server({ server });
 
+const width = 640;
+const height = 420;
+
 wss.connectionCount = 0;
 wss.on('connection', function(socket, upgradeReq) {
     var streamHeader = new Buffer(8);
