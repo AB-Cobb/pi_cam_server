@@ -31,24 +31,9 @@ wss.broadcast = function(data) {
 		}
 	});
 };
-const streamSever = http.createServer(app, (req,res)=>{
-    res.connection.setTimeout(0);
-    req.on('data', data => {
-        console.log("pi cam data")
-		wss.broadcast(data);
-		if (req.socket.recording) {
-			req.socket.recording.write(data);
-		}
-    });
-    req.on('end',function(){
-		console.log('close');
-		if (req.socket.recording) {
-			req.socket.recording.close();
-        }
-    });
-})
-/*
-app.get("/streamin", (req, res) => {
+
+app.post("/streamin", (req, res) => {
+    console.log("pi can stream incoming")
     res.connection.setTimeout(0);
     req.on('data', data => {
         console.log("pi cam data")
