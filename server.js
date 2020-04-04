@@ -48,7 +48,7 @@ app.post("/streamin", (req, res) => {
 			req.socket.recording.close();
         }
     });
-})*/
+})//*/
 
 app.get ('/', (req, res) => {
     res.sendFile("index.html", { root: __dirname })
