@@ -21,7 +21,7 @@ wss.broadcast = function(data) {
 	});
 };
 
-app.POST("/streamin", (req, res) => {
+app.post("/streamin", (req, res) => {
     res.connection.setTimeout(0);
     res.on('data', data => {
 		wss.broadcast(data);
