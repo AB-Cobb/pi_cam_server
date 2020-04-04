@@ -19,7 +19,7 @@ d[dp+25]=-t10;d[dp+7]=t10;d[dp+24]=-t15;d[dp+8]=t15;d[dp+23]=-t12;d[dp+9]=t12;d[
 </script>
     <script type="text/javascript">
 		var canvas = document.getElementById('video-canvas');
-		var url = 'ws://'+location.origin.replace(/^http/, 'ws')
+		var url = location.origin.replace(/^http/, 'ws')
 		var player = new JSMpeg.Player(ws, {canvas: canvas});
 	</script>
 </body>
