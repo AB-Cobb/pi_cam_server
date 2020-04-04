@@ -1,7 +1,7 @@
 {
   "name": "pi_cam_serve",
   "version": "1.0.0",
-  "description": "web cam server por rapsberry pi",
+  "description": "web cam server for rapsberry pi",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,5 +13,9 @@
     "express": "^4.17.1",
     "utf-8-validate": "^5.0.2",
     "ws": "^7.2.3"
+  },
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.13.4"
   }
 }
