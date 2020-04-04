@@ -1,5 +1,5 @@
 
-const { Server, WebSocket } = require('ws');
+const { Server } = require('ws');
 const express = require ('express')
 const PORT = process.env.PORT || 3000;
 const app = express()
@@ -26,7 +26,7 @@ wss.on('connection', function(socket, upgradeReq) {
 });
 wss.broadcast = function(data) {
 	wss.clients.forEach(function each(client) {
-		if (client.readyState === WebSocket.OPEN) {
+		if (client.readyState === Server.OPEN) {
 			client.send(data);
 		}
 	});
