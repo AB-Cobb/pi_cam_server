@@ -56,6 +56,10 @@ app.post("/streamin", (req, res) => {
     });
 })//*/
 
+app.get("JSMpeg", (req,res) => {
+    res.sendFile('jsmpeg.min.js', { root: __dirname })
+})
+
 app.get ('/', (req, res) => {
     res.sendFile("index.html", { root: __dirname })
 })
