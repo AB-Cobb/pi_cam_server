@@ -5,11 +5,14 @@ const PORT = process.env.PORT || 3000;
 const app = express()
 server = app.listen(PORT)
 const wss = new Server({ server });
-const http = require('http')
-
 
 wss.connectionCount = 0;
 wss.on('connection', function(socket, upgradeReq) {
+    var streamHeader = new Buffer(8);
+    streamHeader.write('jsmp');
+	streamHeader.writeUInt16BE(width, 4);
+	streamHeader.writeUInt16BE(height, 6);
+	socket.send(streamHeader, {binary:true});
     wss.connectionCount++;
     console.log(
 		'New WebSocket Connection: ', 
@@ -26,9 +29,9 @@ wss.on('connection', function(socket, upgradeReq) {
 });
 wss.broadcast = function(data) {
 	wss.clients.forEach(function each(client) {
-		//if (client.readyState === Server.OPEN) {
+		if (client.readyState) {
 			client.send(data);
-		//}
+		}
 	});
 };
 
