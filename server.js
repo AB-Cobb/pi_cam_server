@@ -8,9 +8,18 @@ const wss = new Server({ server });
 
 wss.connectionCount = 0;
 wss.on('connection', function(socket, upgradeReq) {
-	wss.connectionCount++;
+    wss.connectionCount++;
+    console.log(
+		'New WebSocket Connection: ', 
+		(upgradeReq || socket.upgradeReq).socket.remoteAddress,
+		(upgradeReq || socket.upgradeReq).headers['user-agent'],
+		'('+socketServer.connectionCount+' total)'
+	);
 	socket.on('close', function(code, message){
-		wss.connectionCount--;
+        wss.connectionCount--;
+        console.log(
+			'Disconnected WebSocket ('+socketServer.connectionCount+' total)'
+		);
 	});
 });
 wss.broadcast = function(data) {
