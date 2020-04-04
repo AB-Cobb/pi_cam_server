@@ -43,7 +43,8 @@ app.post("/streamin", (req, res) => {
 		console.log('close');
 		if (req.socket.recording) {
 			req.socket.recording.close();
-		}
+        }
+    });
 })
 
 app.get ('/', (req, res) => {
