@@ -32,5 +32,5 @@ app.post("/streamin", (req, res) => {
 })
 
 app.get ('/', (req, res) => {
-    res.render('index')
+    res.render('index.html')
 })
