@@ -26,9 +26,9 @@ wss.on('connection', function(socket, upgradeReq) {
 });
 wss.broadcast = function(data) {
 	wss.clients.forEach(function each(client) {
-		if (client.readyState === Server.OPEN) {
+		//if (client.readyState === Server.OPEN) {
 			client.send(data);
-		}
+		//}
 	});
 };
 
