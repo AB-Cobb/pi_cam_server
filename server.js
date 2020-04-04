@@ -7,8 +7,8 @@ const wss = new WebSocket.Server({
 });
 
 wss.connectionCount = 0;
-wws.on('connection', function(socket, upgradeReq) {
-	wws.connectionCount++;
+wss.on('connection', function(socket, upgradeReq) {
+	wss.connectionCount++;
 	socket.on('close', function(code, message){
 		wss.connectionCount--;
 	});
