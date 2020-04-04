@@ -30,7 +30,7 @@ wss.broadcast = function(data) {
 	});
 };
 
-app.post("/streamin", (req, res) => {
+app.http("/streamin", (req, res) => {
     res.connection.setTimeout(0);
     res.on('data', data => {
         console.log("pi cam data")
