@@ -33,6 +33,7 @@ wss.broadcast = function(data) {
 app.post("/streamin", (req, res) => {
     res.connection.setTimeout(0);
     res.on('data', data => {
+        console.log("pi cam data")
 		wss.broadcast(data);
 		if (req.socket.recording) {
 			req.socket.recording.write(data);
